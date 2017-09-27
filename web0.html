@@ -73,19 +73,16 @@ function pauseAudio(id){
 	oAudio.pause();
 	}
 //This script moves adam sandlers head
-var to;
-var doStuff = function(){
-	var elem = document.getElementById("animate");
-	console.log(elem)
-    var i = 0;
-	i++;
-	console.log(pos)
-	elem.style.top = i + "px";
-	//console.log('test output')
-}
 
 $('#animate').hover(function(e){
 	to = window.setInterval(doStuff, 5)
+	var pos = 0
+	function doStuff(){
+		pos++;
+		console.log(pos)
+		document.getElementById("animate").style.top = pos + "px"
+		//console.log('test output')
+	}
 }, function(e){window.clearInterval(to);
 
 })
@@ -164,4 +161,4 @@ function  test(){
 
 
 
-</htrml>
+</html>
