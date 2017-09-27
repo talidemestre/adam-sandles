@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+    width: 900px;
+    height: 900px;
+    position: relative;
+    background-image: url('door.jpg');
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: red;
+}
+#animateHead {    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+#animateMouth {    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+#speechBubble{
+    width: 600px;
+    height: 600px;
+    position: absolute;
+}
+
+</style>
+
+
+<audio id = 'voice' loop><source src='shampoo.mp3' type="audio/mpeg"></audio>
+<head>
+</head>
+<body style="background-image:url('nae.png')">
+<h1 id="demo">yeah ok<h1>
+Yeet: <input type="text" id='userInput' required> </input>
+<button onmouseover="test();moveAdam();">ok</button>
+	
+<div id="container">	
+    <div id="animate" onmouseover="moveAdam(true)" onmouseleave="">	
+	    <div id = "animateHead"><img src="adamHead.png">
+	    </div>
+		
+	    <div id ="animateMouth">
+		<img src="adamMouth.png" alt="adam sandler finds an abandoned shoe in the woods">
+	    </div>
+		
+		<div id="speechBubble"><img src="speech.png" onmouseover="speechWobble(true);talkAdam(true);playAudio('voice');" onmouseleave="pauseAudio('voice')" align="right">
+		</div>
+	</div>
+</div>
+
+<script>
+
+//Play's whatever audio file needs doing.
+function playAudio(id){
+	var oAudio = document.getElementById(id);
+	oAudio.play();
+	}
+function pauseAudio(id){
+    var oAudio = document.getElementById(id);
+	oAudio.pause();
+	}
+//This script moves adam sandlers head
+function moveAdam(condition) {
+    var elem = document.getElementById("animate");
+    var pos = elem.style.top;
+    var id = setInterval(frame,5);
+	var i = 0;
+    function frame(){
+        if(i>400){ 
+	        clearInterval(id);
+			return
+	    }else{
+		    pos++;
+	        elem.style.top = pos + "px";
+			i++;
+        }    
+    }
+}
+//This script makes adam sandler talk
+function talkAdam(condition){
+	var elem = document.getElementById("animateMouth")
+	var pos = elem.style.top;
+	var id =setInterval(frame2,100);
+	var upDown= true;
+	function frame2(){
+	    if (condition==false){
+		    clearInterval(id);
+	}else{
+	    if (upDown){
+		pos+=8;
+		upDown=false;
+		}else{
+		pos-=8
+		upDown = true;
+		}
+		elem.style.top = pos + "px";
+	}
+	}
+}
+//This wobbles the text box
+function speechWobble(condition) {
+    var elem = document.getElementById("speechBubble");
+    var pos = elem.style.top;
+    var id = setInterval(frame1,600);
+	var upDown= true;
+    function frame1(){
+        if(condition==false){
+	        clearInterval(id);
+	    }else{
+		    if (upDown){
+		        pos+=8;
+				upDown=false;
+			} else {
+			    pos-=8;
+			    upDown=true;
+			}
+	        elem.style.top = pos + "px";
+			
+        }    
+    }
+}
+		
+//This function changes the heading near the top of the page
+function  test(){
+    var userInput = document.getElementById("userInput").value;
+    document.getElementById("demo").innerHTML = userInput;
+	}
+</script>
+</body>
+
+
+
+
+
+</htrml>
