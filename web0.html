@@ -48,7 +48,7 @@ Yeet: <input type="text" id='userInput' required> </input>
 <button onmouseover="test();moveAdam();">ok</button>
 	
 <div id="container">	
-    <div id="animate">	
+    <div id="animate" style='top:0px'>	
 	    <div id = "animateHead"><img src="adamHead.png">
 	    </div>
 		
@@ -76,11 +76,15 @@ function pauseAudio(id){
 
 $('#animate').hover(function(e){
 	to = window.setInterval(doStuff, 5)
-	var pos = 0
+	var elem = document.getElementById("animate")
+	var pos = elem.style.top
+	console.log(pos)
+	pos = parseInt(pos)
+	console.log(pos)
 	function doStuff(){
 		pos++;
-		console.log(pos)
-		document.getElementById("animate").style.top = pos + "px"
+		//console.log(pos)
+		elem.style.top = pos + "px"
 		//console.log('test output')
 	}
 }, function(e){window.clearInterval(to);
