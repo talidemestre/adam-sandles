@@ -49,14 +49,14 @@ Yeet: <input type="text" id='userInput' required> </input>
 	
 <div id="container">	
     <div id="animate" style='top:0px'>	
-	    <div id = "animateHead"><img src="adamHead.png">
+	    <div id = "animateHead" style='top:0px'><img src="adamHead.png">
 	    </div>
 		
-	    <div id ="animateMouth">
+	    <div id ="animateMouth" style='top:0px'>
 		<img src="adamMouth.png" alt="adam sandler finds an abandoned shoe in the woods">
 	    </div>
 		
-		<div id="speechBubble"><img src="speech.png" onmouseover="speechWobble(true);talkAdam(true);playAudio('voice');" onmouseleave="pauseAudio('voice')" align="right">
+		<div id="speechBubble" onmouseover="speechWobble(true);playAudio('voice');" onmouseleave="pauseAudio('voice')" style='top:0px'><img src="speech.png" align="right">
 		</div>
 	</div>
 </div>
@@ -72,15 +72,13 @@ function pauseAudio(id){
     var oAudio = document.getElementById(id);
 	oAudio.pause();
 	}
-//This script moves adam sandlers head
+//This script moves adam sandlers  (using jQuery)
 
 $('#animate').hover(function(e){
 	to = window.setInterval(doStuff, 5)
 	var elem = document.getElementById("animate")
-	var pos = elem.style.top
-	console.log(pos)
-	pos = parseInt(pos)
-	console.log(pos)
+	var pos = parseInt(elem.style.top)
+	//console.log(pos)
 	function doStuff(){
 		pos++;
 		//console.log(pos)
@@ -110,7 +108,32 @@ $('#animate').hover(function(e){
 }
 */
 //This script makes adam sandler talk
-function talkAdam(condition){
+
+
+$('#speechBubble').hover(function(e){
+	toMouth = window.setInterval(doStuff, 150)
+	var elem = document.getElementById("animateMouth")
+	elem.style.top = 0
+	var pos = parseInt(elem.style.top)
+	var upDown = true
+	//console.log(pos)
+	function doStuff(){
+		if (upDown){
+			pos+=8;
+			upDown=false;
+		}else{
+			pos-=8
+			upDown=true;
+		}
+		//console.log(pos)
+		elem.style.top = pos + "px"
+		//console.log('test output')
+	}
+}, function(e){window.clearInterval(toMouth);
+
+})
+
+/*function talkAdam(condition){
 	var elem = document.getElementById("animateMouth")
 	var pos = elem.style.top;
 	var id =setInterval(frame2,100);
@@ -130,6 +153,8 @@ function talkAdam(condition){
 	}
 	}
 }
+
+*/
 //This wobbles the text box
 function speechWobble(condition) {
     var elem = document.getElementById("speechBubble");
