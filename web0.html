@@ -48,7 +48,7 @@ Yeet: <input type="text" id='userInput' required> </input>
 <button onmouseover="test();moveAdam();">ok</button>
 	
 <div id="container">	
-    <div id="animate" onmouseover="moveAdam(true)" onmouseleave="">	
+    <div id="animate">	
 	    <div id = "animateHead"><img src="adamHead.png">
 	    </div>
 		
@@ -73,8 +73,25 @@ function pauseAudio(id){
 	oAudio.pause();
 	}
 //This script moves adam sandlers head
+var to;
+var doStuff = function(){
+	var elem = document.getElementById("animate");
+	console.log(elem)
+    var i = 0;
+	i++;
+	console.log(pos)
+	elem.style.top = i + "px";
+	//console.log('test output')
+}
 
-function moveAdam(condition) {
+$('#animate').hover(function(e){
+	to = window.setInterval(doStuff, 5)
+}, function(e){window.clearInterval(to);
+
+})
+
+
+/*function moveAdam(condition) {
     var elem = document.getElementById("animate");
     var pos = elem.style.top;
     var id = setInterval(frame,5);
@@ -90,6 +107,7 @@ function moveAdam(condition) {
         }    
     }
 }
+*/
 //This script makes adam sandler talk
 function talkAdam(condition){
 	var elem = document.getElementById("animateMouth")
