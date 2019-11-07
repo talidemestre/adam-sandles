@@ -5,11 +5,30 @@
 <title>Doggies</title>
 </head>
 
-<body background="omfgdogs.gif">
+<body id="background">
 
-<audio autoplay loop>
-  <source src="omfgdogs.mp3" type="audio/mpeg">
+<button id="button_press" type="button" onclick="dogTime()" >Free sandles?</button>
+
+<audio id="player" loop>
+  <source src="omfgdogs.mp3" type="audio/mp3">
 </audio>
+
+<script>
+    document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+    document.getElementById("button_press").style.visibility = "hidden";
+
+    document.getElementById("player").play().catch(function(error) {
+      document.getElementById("button_press").style.visibility = "visible";
+      document.getElementById("background").style.backgroundImage = ""
+    } )
+
+    function dogTime(){
+      document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+      document.getElementById("player").play();
+      document.getElementById("button_press").style.visibility = "hidden";
+    }
+
+</script>
 
 </body>
 </html>
