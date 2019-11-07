@@ -3,6 +3,23 @@ speechWobble(true);
 STRING="shampoo is better, I go on first and clean the hair";
 DISPLAYSTRING = "";
 DISPLAYSTRINGCOUNT = 0;
+BEGIN_ANIMATE = true;
+
+
+// Setup for autoplay vs non autoplay
+document.getElementById("talkButton").style.visibility = "hidden";
+
+document.getElementById("player").play().catch(function(error) {
+    document.getElementById("talkButton").style.visibility = "visible";
+    document.getElementById("speechElems").style.visibility = "hidden";
+    BEGIN_ANIMATE = false;
+} )
+
+function initiateConversation(){
+    document.getElementById("speechElems").style.visibility = "visible";
+    document.getElementById("talkButton").style.visibility = "hidden";
+    BEGIN_ANIMATE = true;
+}
 
 //Animates the text.
 /*function animateText(string){
@@ -32,8 +49,10 @@ $('#animate').hover(function(e){
 
 //Play's whatever audio file needs doing.
 function playAudio(id){
-    var oAudio = document.getElementById(id);
-    oAudio.play();
+    if (BEGIN_ANIMATE) {
+        var oAudio = document.getElementById(id);
+        oAudio.play();
+    }
 }
 function pauseAudio(id){
     var oAudio = document.getElementById(id);
@@ -47,10 +66,12 @@ $('#animate').hover(function(e){
     var pos = parseInt(elem.style.top)
     //console.log(pos)
     function doStuff(){
-        pos++;
-        //console.log(pos)
-        elem.style.top = pos + "px"
-        //console.log('test output')
+        if (BEGIN_ANIMATE) {
+            pos++;
+            //console.log(pos)
+            elem.style.top = pos + "px"
+            //console.log('test output')
+        }
     }
 }, function(e){window.clearInterval(to);
 
