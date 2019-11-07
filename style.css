@@ -1,0 +1,29 @@
+
+#container {
+    width: 700px;
+    height: 700px;
+    position: relative;
+    background-image: url('door.jpg');
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: red;
+}
+#animateHead {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+#animateMouth {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+#speechBubble{
+    width: 280px;
+    height: 200px;
+    position: absolute;
+    left: 200px;
+}
