@@ -3,16 +3,21 @@ speechWobble(true);
 STRING="shampoo is better, I go on first and clean the hair";
 stringDex=0
 actOneStrings =
-    [("hey nice to meet you, i'm the sand man", 100)
-        , "I'll be your guide on this here journey today"
-        , "you don't believe i'm the real deal?"
-        , "?"
-        , "??"
-        , "???"
-        , "hold on, let me recite one of my famous adam sandler joke lines"
-        , "shampoo is better, I go on first and clean the hair"
-        , "conditioner is better, i leave the hair silky and smooth"
+    [{'text':"hey nice to meet you, i'm the sand man", 'timeout':100, 'audio':'voice'}
+        , {'text':"I'll be your guide on this here journey today", 'timeout':100}
+        , {'text':"you don't believe i'm the real deal?", 'timeout':100}
+        , {'text':"?", 'timeout':100}
+        , {'text':"??", 'timeout':500}
+        , {'text':"???", 'timeout':1000}
+        , {'text': "hold on, let me recite one of my famous adam sandler joke lines", 'timeout':100}
+        , {'text':"shampoo is better, I go on first and clean the hair", 'timeout':100, 'audio':"shampoo"}
+        , {'text':"conditioner is better, i leave the hair silky and smooth", 'timeout':100}
+        , {'text':"  ", 'timeout':800}
+        , {'text':"there we go, surely you believe me now", 'timeout':100, 'audio':"voice"}
+        , {'text':"", 'timeout':100}
     ]
+
+currentAudio = "voice";
 displayString = "";
 displayStringCount = 0;
 BEGIN_ANIMATE = true;
@@ -43,10 +48,10 @@ function initiateConversation(){
 
 //Animates the text
 $('#animate').hover(function(e){
-    toSpeech = window.setInterval(printText, 100)
+    toSpeech = window.setInterval(printText, actOneStrings[stringDex].timeout)
     var elem = document.getElementById("speechText")
     var pos = parseInt(elem.style.top)
-    var stringArray = actOneStrings[stringDex].split("");
+    var stringArray = actOneStrings[stringDex].text.split("");
     //console.log(pos)
     function printText(){
         if (stringArray[displayStringCount] != undefined){
@@ -58,7 +63,18 @@ $('#animate').hover(function(e){
             stringDex ++;
             displayStringCount = 0;
             displayString = "";
-            stringArray = actOneStrings[stringDex].split("");
+            stringArray = actOneStrings[stringDex].text.split("");
+            window.clearInterval(toSpeech);
+            if (actOneStrings[stringDex].audio != undefined) {
+                var oldAudio = document.getElementById(currentAudio);
+                currentAudio = actOneStrings[stringDex].audio;
+                var newAudio = document.getElementById(currentAudio);
+                newAudio.play()
+                oldAudio.pause()
+
+
+            }
+            toSpeech = window.setInterval(printText, actOneStrings[stringDex].timeout)
         }
     }
 }, function(e){window.clearInterval(toSpeech);
@@ -66,9 +82,9 @@ $('#animate').hover(function(e){
 })
 
 //Play's whatever audio file needs doing.
-function playAudio(id){
+function playAudio(){
     if (BEGIN_ANIMATE) {
-        var oAudio = document.getElementById(id);
+        var oAudio = document.getElementById(currentAudio);
         oAudio.play();
     }
 }
