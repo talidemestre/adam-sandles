@@ -12,7 +12,10 @@ actOneStrings =
         , {'text': "hold on, let me recite one of my famous adam sandler joke lines", 'timeout':100}
         , {'text':"shampoo is better, I go on first and clean the hair", 'timeout':100, 'audio':"shampoo"}
         , {'text':"conditioner is better, i leave the hair silky and smooth", 'timeout':100}
-        , {'text':"  ", 'timeout':800}
+        , {'text':"oh really fool?", 'timeout':100}
+        , {'text':"really?", 'timeout':50}
+        , {'text':"", 'timeout':5000}
+        , {'text':"stop looking at me swan", 'timeout':60}
         , {'text':"there we go, surely you believe me now", 'timeout':100, 'audio':"voice"}
         , {'text':"", 'timeout':100}
     ]
@@ -88,8 +91,8 @@ function playAudio(){
         oAudio.play();
     }
 }
-function pauseAudio(id){
-    var oAudio = document.getElementById(id);
+function pauseAudio(){
+    var oAudio = document.getElementById(currentAudio);
     oAudio.pause();
 }
 
