@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Doggies</title>
+</head>
+
+<body id="background">
+
+<button id="button_press" type="button" onclick="dogTime()" >Free sandles?</button>
+
+<h1 style="color:red; font-size: 19vw; margin-top:0px; margin-bottom:0px">YOU DIED</h1>
+<h1>kinda a bruh moment</h1>
+
+<a href="https://taliesindemestre.com/" target="_blank" rel="nofollow" style="position:absolute; bottom:0px;">
+  More things
+</a>
+
+<audio id="player" loop>
+  <source src="omfgdogs.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+    document.getElementById("button_press").style.visibility = "hidden";
+
+    document.getElementById("player").play().catch(function(error) {
+      document.getElementById("button_press").style.visibility = "visible";
+      document.getElementById("background").style.backgroundImage = ""
+    } )
+
+    function dogTime(){
+      document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+      document.getElementById("player").play();
+      document.getElementById("button_press").style.visibility = "hidden";
+    }
+
+</script>
+
+</body>
+</html>

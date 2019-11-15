@@ -62,7 +62,7 @@ function acceptQ(){
 }
 
 function denyQ(){
-    window.location = "omfgdogs.html";
+    window.location = "death.html";
 }
 
 function initiateConversation(){
