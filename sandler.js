@@ -1,7 +1,7 @@
 
 speechWobble(true);
 STRING="shampoo is better, I go on first and clean the hair";
-stringDex=20;
+stringDex=0;
 
 
 currentAudio = "voice";
