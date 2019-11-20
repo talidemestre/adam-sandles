@@ -5,7 +5,7 @@
 <title>Doggies</title>
 </head>
 
-<body id="background">
+<body id="background" style="background-size: 100%">
 
 <button id="button_press" type="button" onclick="dogTime()" >Free sandles?</button>
 
@@ -17,11 +17,11 @@
 </a>
 
 <audio id="player" loop>
-  <source src="omfgdogs.mp3" type="audio/mp3">
+  <source src="meat.mp3" type="audio/mp3">
 </audio>
 
 <script>
-    document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+    document.getElementById("background").style.backgroundImage = "url(sandler-death.jpg)"
     document.getElementById("button_press").style.visibility = "hidden";
 
     document.getElementById("player").play().catch(function(error) {
@@ -30,7 +30,7 @@
     } )
 
     function dogTime(){
-      document.getElementById("background").style.backgroundImage = "url(omfgdogs.gif)"
+      document.getElementById("background").style.backgroundImage = "url(sandler-death.jpg)"
       document.getElementById("player").play();
       document.getElementById("button_press").style.visibility = "hidden";
     }
