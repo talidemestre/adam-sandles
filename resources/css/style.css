@@ -3,7 +3,7 @@
     width: 700px;
     height: 700px;
     position: relative;
-    background-image: url('door.jpg');
+    background-image: url('../img/door.jpg');
 }
 #animate {
     width: 50px;
