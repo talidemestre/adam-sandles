@@ -1,16 +1,4 @@
 
-speechWobble(true);
-STRING="shampoo is better, I go on first and clean the hair";
-stringDex=0;
-
-
-currentAudio = "voice";
-displayString = "";
-displayStringCount = 0;
-
-BEGIN_ANIMATE = true;
-ALLOW_TALK = true;
-
 actOneStrings =
     [{text:"hey nice to meet you, i'm the sand man", timeout:100, audio:'voice'}
         , {text:"I'll be your guide on this here journey today", timeout:100}
@@ -37,6 +25,18 @@ actOneStrings =
         , {text:"Excellent!", timeout:100,  action:helpButtons}
 
     ]
+
+speechWobble(true);
+STRING="shampoo is better, I go on first and clean the hair";
+stringDex=0;
+
+
+currentAudio = "voice";
+displayString = "";
+displayStringCount = 0;
+
+BEGIN_ANIMATE = true;
+ALLOW_TALK = true;
 
 // Setup for autoplay vs non autoplay
 document.getElementById("talkButton").style.visibility = "hidden";
